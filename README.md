@@ -17,7 +17,7 @@ all: 总页数
 ###使用示例
 ```
 <template>
-        <pagination :cur.sync="1" :total.sync="total" @gopage="listen"></pagination>
+        <pagination :pageIndex.sync="1" :total.sync="total" @gopage="listen"></pagination>
 </template>
 
 <script>
