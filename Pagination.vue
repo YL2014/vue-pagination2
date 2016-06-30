@@ -6,13 +6,19 @@
 				<a @click="go(item)" v-text="item"></a>
 			</li>
 			<li v-if="pageIndex!=all"><a @click="next">下一页</a></li>
-			<li><a href="javascript:;"><i v-text="all"></i>页</a></li>
+			<li class="page-tonum"><input type="text" v-model="toPage"><a href="javascript:;" @click="goNumPage">GO</a></li>
+			<li><a href="javascript:;">共<i v-text="all"></i>页</a></li>
 		</ul>
 	</div>
 </template>
 
 <script>
 export default {
+	data () {
+		return {
+			toPage: 1
+		}
+	},
 	props: {
 		pageIndex: {
 			type: Number,
@@ -69,6 +75,16 @@ export default {
 				this.pageIndex = index
 				this.$emit('gopage', index)
 			}
+		},
+		goNumPage () {
+			if(/(^[1-9][0-9]*$)/.test(this.toPage)){
+				if(this.toPage > this.all){
+					this.toPage = this.all
+				}
+				this.go(this.toPage)
+			}else{
+				this.toPage = this.pageIndex
+			}
 		}
 	}
 }
@@ -103,6 +119,21 @@ export default {
     line-height: 1.42857143;
     color: #337ab7;
     pageIndexsor: pointer
+}
+.page-bar li.page-tonum a{
+	padding: 6px;
+    border-radius: 6px;
+    background-color: #25263E;
+    float: none;
+    color: whitesmoke;
+}
+.page-bar li.page-tonum input{
+	width: 30px;
+	margin-left: 5px;
+	margin-right: 5px;
+    border: 1px solid #ccc;
+    height: 33px;
+    text-align: center;
 }
 .page-bar a:hover{
     background-color: #eee;
