@@ -33,15 +33,7 @@ export default {
 	},
 	computed: {
 		all () {
-			if(this.total > this.pageSize){
-				if(this.total % this.pageSize != 0){
-					return parseInt(this.total/this.pageSize)+1
-				}else{
-					return this.total/this.pageSize
-				}
-			}else{
-				return 1
-			}
+			return window.Math.ceil(this.total/this.pageSize)
 		},
 		items () {
 			let [left, right, ar] = [1, this.all, []]
