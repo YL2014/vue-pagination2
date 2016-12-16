@@ -1,6 +1,6 @@
 # vue-pagination2
 
-##基于vue的一个分页组件，参考github上的一个项目做得修改，不算原创，方便结合vuex使用
+##基于vue的一个分页组件，参考github上的一个项目做得修改，方便使用
 
 ####参考项目地址：[https://github.com/cycgit/vue-pagination](https://github.com/cycgit/vue-pagination)
 
